@@ -13,11 +13,8 @@
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
 function returnFirstArgument(a) {
-  return a;
+    return a;
 }
-returnFirstArgument(10);
-returnFirstArgument('Привет');
-
 /*
  Задание 2:
 
@@ -32,15 +29,12 @@ returnFirstArgument('Привет');
  Пример:
    sumWithDefaults(10) вернет 110
  */
-
-
 function sumWithDefaults(a, b = 100) {
-  let result = a + b;
-  return result;
+    
+    let result = a + b;
+   
+    return result;
 }
-
-sumWithDefaults(10);
-
 /*
  Задание 3:
 
@@ -51,9 +45,8 @@ sumWithDefaults(10);
  */
 
 function returnFnResult(fn) {
-  return fn();
+    return fn();
 }
-
 /*
  Задание 4:
 
@@ -68,12 +61,11 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 13
  */
 
-var f = returnCounter(10);
+returnCounter(10);
 
 function returnCounter(number = 0) {
-  return () => ++number;
+    return () => ++number;
 }
-
 /*
  Задание 5 *:
 
@@ -84,13 +76,14 @@ function returnCounter(number = 0) {
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
 function returnArgumentsArray() {
-  var result = [];
-  for (var i = 0; i < arguments.length; i++) {
-    result[i] = arguments[i];
-  }
-  return result;
-}
+    var result = [];
 
+    for (var i = 0; i < arguments.length; i++) {
+        result[i] = arguments[i];
+    }
+
+    return result;
+}
 /*
  Задание 6 *:
 
@@ -107,22 +100,22 @@ function returnArgumentsArray() {
    console.log(newSum()) выведет 6
  */
 function bindFunction(fn) {
-  var args = "";
+    var args = '';
 
-  for (var i = 1; i < arguments.length; i++) {
-    args += arguments[i];
-  }
+    for (var i = 1; i < arguments.length; i++) {
+        args += arguments[i];
+    }
 
-  var func = fn.bind(null, args);
+    var func = fn.bind(null, args);
 
-  return func;
+    return func;
 }
 
 export {
-  returnFirstArgument,
-  sumWithDefaults,
-  returnArgumentsArray,
-  returnFnResult,
-  returnCounter,
-  bindFunction
+    returnFirstArgument,
+    sumWithDefaults,
+    returnArgumentsArray,
+    returnFnResult,
+    returnCounter,
+    bindFunction
 }
