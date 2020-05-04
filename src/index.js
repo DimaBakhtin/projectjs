@@ -7,6 +7,9 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
  */
 function forEach(array, fn) {
+  for (let index = 0; index < array.length; index += 1) {
+    fn(array[index], index, array);
+  }
 }
 
 /*
@@ -16,6 +19,13 @@ function forEach(array, fn) {
  Посмотрите как работает map и повторите это поведение для массива, который будет передан в параметре array
  */
 function map(array, fn) {
+  const result = [];
+
+  for (let index = 0; index < array.length; index += 1) {
+    result.push(fn(array[index], index, array));
+  }
+
+  return result;
 }
 
 /*
@@ -25,6 +35,14 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
+  let result = initial || array[0];
+
+  for (let index = initial ? 0 : 1; index < array.length; index += 1) {
+    let value = array[index];
+    result = fn(result, value, index, array);
+  }
+
+  return result;
 }
 
 /*
@@ -36,31 +54,20 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-}
+  const result = [];
 
-/*
- Задание 5 *:
+  for (let value of Object.keys(obj)) {
+    result.push(value.toUpperCase());
+  }
 
- Напишите аналог встроенного метода slice для работы с массивами
- Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
- */
-function slice(array, from, to) {
-}
-
-/*
- Задание 6 *:
-
- Функция принимает объект и должна вернуть Proxy для этого объекта
- Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
- */
-function createProxy(obj) {
+  return result;
 }
 
 export {
-    forEach,
-    map,
-    reduce,
-    upperProps,
-    slice,
-    createProxy
+  forEach,
+  map,
+  reduce,
+  upperProps,
+  slice,
+  createProxy
 };
